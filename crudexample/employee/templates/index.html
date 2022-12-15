@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Index</title>
+  <!-- <script>
+    function validateForm() {
+      let x = document.forms["myForm"]["eid"].value;
+      if (x == "") {
+        alert("Name must be filled out");
+        return false;
+      }
+    }
+    </script> -->
+    <style>
+      .container {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: #333;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.change .bar1 {
+  transform: translate(0, 11px) rotate(-45deg);
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+  transform: translate(0, -11px) rotate(45deg);
+}
+      * {box-sizing: border-box;}
+
+/* Style the navbar */
+.topnav {
+  overflow: hidden;
+  background-color: #e9e9e9;
+}
+
+/* Navbar links */
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Navbar links on mouse-over */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Active/current link */
+.topnav a.active {
+  background-color: #2196F3;
+  color: white;
+}
+.grid-container{
+  text-align: center;
+
+  
+
+}
+
+.sbt1{
+  background-color: #2196F3;
+  width: 5cm;
+  height: 50px;
+  text-align: center;
+}
+/* .id1{
+  height: 50px;
+  background-color: #e9e9e9;
+  text-align-last: 59px;
+  text-size: 50px; 
+
+
+}  */
+/* .id2{
+  height: 5px;
+  text-align: left;
+  text-align: right;
+  text-shadow: #ddd;
+  width: 100px;
+  background-color: #2196F3;
+} */
+.name{
+  height: 50px; 
+  /* background-color: #2196F3; */
+  
+}
+.name1{
+  /* background-color: aqua; */
+  text-align: left;
+  text-decoration-color: #e9e9e9;
+  
+}
+
+
+
+    </style>
+</head>
+
+<body>
+  <div class="topnav">
+    <a class="active" href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    </div>
+  <form method="POST" class="POST-form" action="">
+    {% csrf_token %}
+    <div class="container" onclick="myFunction(this)">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+    
+    <script>
+    // function myFunction(x) {
+    //   x.classList.toggle("change");
+    // }
+    
+    function validation(){
+      
+      // alert("hello  world");
+      var email =document.getElementById("eemail").value;
+      var name =document.getElementById("ename").value;
+      var contact =document.getElementById("econtact").value;
+      
+     if(email==""){
+        document.getElementById("spemail").innerHTML="Insert Email Id"
+      // alert("Insert Email");
+      return false;
+      
+     }
+     if(email.indexOf("@") < 1 || email.lastIndexOf(".") - email.indexOf("@") <2){
+        alert("Please enter correct email");
+        return false;
+     }
+      else if(contact == null || contact == '' || contact.length <= 10){
+       alert("Invalid Contact");
+       document.getElementById("spcontact").innerHTML="Invalid No"
+        // console.log("unuph-")
+        return false;
+      }
+      else if(contact==""){
+        alert("Insert Contact number")
+        return false;
+
+      }
+    return false;
+     }
+    </script>
+    
+    
+    <div class="grid-container">
+      <br>
+      <div>
+        
+        <div>
+          <h1>Enter Details</h1><br><br>
+        </div>
+      </div>
+      <div class="id1">
+        
+        <label class="id2">Employee Id:</label>
+        <input type="text" name="eid" id="eid"><br><br>
+        
+         <!-- {{ form.eid }} <br><br> -->
+        
+      </div>
+      <div class="name">
+        <label class="name1">Employee Name:</label>
+        
+        <input type="text" name="ename" id="ename"><span id="spname"></span> <br><br>
+
+        
+      </div>
+      <div>
+        <label>Employee Email:</label>
+        
+        <input type="text" name="eemail" id="eemail"><span id="spemail"></span> <br><br>
+       
+      </div>
+      <div>
+        <label>Employee Contact:</label>
+        
+        <input type="text" name="econtact" id="econtact"><span id="spcontact"></span><br><br>
+       
+      </div>
+      <div>
+        <label>Employee Address:</label>
+        
+        <input type="text" name="eaddress" id="Address"><br><br>
+       
+      </div>
+      
+      <div class="sbt">
+        
+       
+          <button class="sbt1" onclick="return validation()">Submit</button>
+        
+      </div>
+    </div>
+  </form>
+</body>
+
+</html>
